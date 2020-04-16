@@ -27,8 +27,8 @@ decimal {digito}*"."{digito}+
 aritmetico [\+\-\*\/\%]
 relacional (>|<|>=|<=|==|!=)
 asignacion =
-logico ["||"|&&|!]
-puntuacion [{|}|(|)|;|,]
+logico ("||"|"&&"|!)
+puntuacion [{}();,]
 comentario (\/\*[^*/]*\*\/)
 %%
 {id}    { 
@@ -42,7 +42,7 @@ comentario (\/\*[^*/]*\*\/)
             TOKEN.clase = PR;
             strcpy(TOKEN.valor, yytext);
             TOKEN.line = yylineno;
-            printf("Encontré el token \"%s\"   Tipo: Palabra reservada   Línea: %d \n\n", yytext, yylineno);
+            printf("Encontré el token \"%s\"   Tipo: Palabra Reservada   Línea: %d \n\n", yytext, yylineno);
             return PR;
         }
 {aritmetico}    { 
@@ -94,7 +94,7 @@ comentario (\/\*[^*/]*\*\/)
             printf("Encontré el token \"%s\"   Tipo: Decimal   Línea: %d \n\n", yytext, yylineno);
             return DEC;
         }
-{comentario} {/* Ignora los comentarios*/}
+{comentario} {/* Ignora los comentarios, la ER ignora todo hasta que detecta el cierre del comentario*/}
 
 [ \t\n\r] {/* Ignora los espacios en blanco*/}
 
