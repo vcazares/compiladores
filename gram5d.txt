@@ -1,0 +1,4 @@
+S -> ES'
+S' -> S | Ɛ
+E -> while E do E | idE'
+E' -> :=E | Ɛ
